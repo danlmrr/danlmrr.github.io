@@ -88,14 +88,14 @@ var TG_NICK = 'ТВОЙ_НИК';
   (function () {
     var c = document.createElement('canvas'); c.className = 'grain'; c.setAttribute('aria-hidden', 'true');
     document.body.appendChild(c);
-    var ctx = c.getContext('2d'), T = 160, tiles = [];
+    var ctx = c.getContext('2d'), T = 256, tiles = [];
     for (var k = 0; k < 6; k++) {
       var t = document.createElement('canvas'); t.width = t.height = T;
       var tc = t.getContext('2d'), d = tc.createImageData(T, T);
-      for (var i = 0; i < d.data.length; i += 4) { var v = Math.random() * 255 | 0; d.data[i] = d.data[i + 1] = d.data[i + 2] = v; d.data[i + 3] = 255; }
+      for (var i = 0; i < d.data.length; i += 4) { var v = Math.random() < 0.5 ? 0 : 255; d.data[i] = d.data[i + 1] = d.data[i + 2] = v; d.data[i + 3] = 255; }
       tc.putImageData(d, 0, 0); tiles.push(t);
     }
-    function size() { c.width = Math.ceil(innerWidth / 2); c.height = Math.ceil(innerHeight / 2); c.style.imageRendering = 'auto'; }
+    function size() { c.width = innerWidth; c.height = innerHeight; }
     function draw() {
       var p = ctx.createPattern(tiles[Math.random() * tiles.length | 0], 'repeat');
       ctx.save(); ctx.translate(-(Math.random() * T | 0), -(Math.random() * T | 0));
