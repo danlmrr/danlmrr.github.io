@@ -6,8 +6,10 @@ var TG_NICK = 'ТВОЙ_НИК';
 (function () {
   document.documentElement.classList.remove('no-js');
 
-  /* светлая версия для сравнения: добавь к адресу ?light */
-  if (/[?&]light\b/.test(location.search)) document.documentElement.classList.remove('theme-dark');
+  /* шапка: прозрачная наверху, матовое стекло при прокрутке */
+  var root = document.documentElement;
+  function onScroll() { root.classList.toggle('is-scrolled', scrollY > 40); }
+  onScroll(); addEventListener('scroll', onScroll, { passive: true });
 
   /* ссылки на Telegram */
   document.querySelectorAll('[data-tg]').forEach(function (a) {
@@ -71,9 +73,10 @@ var TG_NICK = 'ТВОЙ_НИК';
         lastFocus = btn;
         var src = btn.dataset.video;
         frame.classList.toggle('lb__frame--v', btn.dataset.vertical === '1');
+        frame.classList.toggle('lb__frame--round', btn.dataset.round === '1');
         frame.innerHTML = src
           ? '<iframe src="' + src + '" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen title="Видео"></iframe>'
-          : '<div class="lb__empty">Видео скоро будет здесь</div>';
+          : '<div class="lb__empty">' + (document.documentElement.lang === 'en' ? 'Video coming soon' : 'Видео скоро будет здесь') + '</div>';
         lb.classList.add('is-open');
         document.body.style.overflow = 'hidden';
         closeBtn.focus();
@@ -109,6 +112,48 @@ var TG_NICK = 'ТВОЙ_НИК';
   /* светящиеся пятна в тёмных блоках */
   document.querySelectorAll('.dark, .cta' + (document.documentElement.classList.contains('theme-dark') ? ', .hero' : '')).forEach(function (s) {
     s.insertAdjacentHTML('afterbegin', '<span class="glow glow--1" aria-hidden="true"></span><span class="glow glow--2" aria-hidden="true"></span>');
+  });
+
+  /* монтаж: вкладки вертикальные / горизонтальные */
+  var tabs = document.querySelectorAll('.tab');
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      tabs.forEach(function (t) {
+        var on = t === tab;
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        t.tabIndex = on ? 0 : -1;
+        document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+      });
+    });
+  });
+
+  /* голосовые отзывы */
+  var PLAY = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#0E0E0E" d="M7 4.5v15l13-7.5z"/></svg>';
+  var PAUSE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#0E0E0E" d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>';
+  var current = null;
+  document.querySelectorAll('.voice').forEach(function (v) {
+    var btn = v.querySelector('.voice__btn'), bars = v.querySelectorAll('.voice__wave i'), time = v.querySelector('.voice__time');
+    var src = v.dataset.audio;
+    function fmt(t) { t = Math.max(0, t | 0); return (t / 60 | 0) + ':' + ('0' + t % 60).slice(-2); }
+    if (!src) { btn.disabled = true; return; }
+    btn.disabled = true;
+    fetch(src, { method: 'HEAD' }).then(function (r) { if (r.ok) btn.disabled = false; }).catch(function () {});
+    var audio = new Audio(); audio.preload = 'none'; audio.src = src;
+    audio.addEventListener('error', function () { btn.disabled = true; });
+    audio.addEventListener('loadedmetadata', function () { time.textContent = fmt(audio.duration); });
+    audio.addEventListener('timeupdate', function () {
+      var k = audio.duration ? audio.currentTime / audio.duration : 0;
+      bars.forEach(function (b, i) { b.classList.toggle('on', i / bars.length < k); });
+      time.textContent = fmt(audio.currentTime);
+    });
+    audio.addEventListener('ended', function () { btn.innerHTML = PLAY; btn.setAttribute('aria-label', btn.dataset.play); });
+    btn.addEventListener('click', function () {
+      if (audio.paused) {
+        if (current && current !== audio) current.pause();
+        document.querySelectorAll('.voice__btn').forEach(function (b) { if (b !== btn && !b.disabled) { b.innerHTML = PLAY; } });
+        audio.play(); current = audio; btn.innerHTML = PAUSE; btn.setAttribute('aria-label', btn.dataset.pause);
+      } else { audio.pause(); btn.innerHTML = PLAY; btn.setAttribute('aria-label', btn.dataset.play); }
+    });
   });
 
   /* появление блоков при прокрутке */
