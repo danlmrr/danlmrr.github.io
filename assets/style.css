@@ -260,3 +260,67 @@ button{font:inherit;color:inherit}
   .lb{padding:12px}
   .lb__frame--v{height:auto;width:100%;max-height:82vh}
 }
+
+/* =================================================================
+   ТЁМНАЯ ТЕМА (включена по умолчанию; светлая — по ссылке ?light)
+   ================================================================= */
+.theme-dark{--paper:#080807;--ink-text:#F2F2EE;--muted:#9C9C96;--card:#141413;--card-2:#1B1B19;--edge:rgba(255,255,255,.09);color-scheme:dark}
+.theme-dark body{background:var(--paper);color:var(--ink-text)}
+.theme-dark .grain{opacity:.055}
+
+/* шапка — стекло */
+.theme-dark .head__bar{background:rgba(18,18,17,.72);border:1px solid var(--edge);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.theme-dark .menu.is-open{background:rgba(18,18,17,.96);border:1px solid var(--edge)}
+
+/* первый экран со свечением */
+.theme-dark .hero{position:relative;isolation:isolate}
+.theme-dark .hero .glow--1{left:-10%;top:-30%;width:780px;height:780px;background:radial-gradient(circle,rgba(214,243,106,.20) 0%,rgba(214,243,106,0) 70%)}
+.theme-dark .hero .glow--2{right:-15%;bottom:-40%;width:860px;height:860px;background:radial-gradient(circle,rgba(214,243,106,.12) 0%,rgba(214,243,106,0) 70%)}
+.theme-dark .mk{color:var(--ink);box-shadow:0 0 28px rgba(214,243,106,.55),0 0 90px rgba(214,243,106,.28)}
+.theme-dark .tag{border-color:rgba(255,255,255,.22);color:#d8d8d2}
+
+/* кнопки */
+.theme-dark .btn{border-color:rgba(255,255,255,.85);color:var(--ink-text)}
+.theme-dark .btn--dark{background:var(--lime);border-color:var(--lime);color:var(--ink);box-shadow:0 0 0 rgba(214,243,106,0);transition:transform .2s,box-shadow .3s}
+.theme-dark .btn--dark:hover{background:var(--lime);box-shadow:0 0 34px rgba(214,243,106,.45)}
+.theme-dark .btn--lime{color:var(--ink)}
+.theme-dark .btn--ghost:hover{background:#fff;color:var(--ink)}
+.theme-dark .cta .btn--dark{background:var(--ink);border-color:var(--ink);color:#fff}
+
+/* фильтр и карточки работ */
+.theme-dark .chip{border-color:rgba(255,255,255,.25);color:var(--ink-text)}
+.theme-dark .chip:hover{background:var(--card)}
+.theme-dark .chip[aria-pressed="true"]{background:var(--lime);border-color:var(--lime);color:var(--ink)}
+.theme-dark .case__img,.theme-dark .cover,.theme-dark .gallery__img{background-color:var(--card);box-shadow:inset 0 0 0 1px var(--edge)}
+.theme-dark .case:hover .case__img{box-shadow:inset 0 0 0 1px rgba(214,243,106,.5),0 0 40px rgba(214,243,106,.12)}
+
+/* блок видео: чуть светлее фона, с рамкой */
+.theme-dark .dark{background:#0F0F0E;border:1px solid var(--edge)}
+.theme-dark .vcard__box{background-color:var(--card-2);border-color:rgba(255,255,255,.14)}
+
+/* услуги и цены */
+.theme-dark .svc{background:var(--card);border:1px solid var(--edge)}
+.theme-dark .svc__d{color:#bdbdb6}
+.theme-dark .svc:hover{background:var(--lime);color:var(--ink);border-color:var(--lime)}
+.theme-dark .svc:hover .svc__d{color:#222}
+.theme-dark .price{border-color:rgba(255,255,255,.18)}
+.theme-dark .price__d{color:#bdbdb6}
+.theme-dark .price--accent{color:var(--ink);box-shadow:0 0 50px rgba(214,243,106,.18)}
+.theme-dark .price--accent .price__d{color:#222}
+
+/* обо мне */
+.theme-dark .about__photo{background-color:var(--card);box-shadow:inset 0 0 0 1px var(--edge)}
+.theme-dark .about__text{background:var(--card);border:1px solid var(--edge)}
+.theme-dark .stat{color:var(--ink)}
+.theme-dark .stat:nth-child(2){background:var(--card);color:var(--ink-text);border:1px solid var(--edge)}
+
+/* контакты остаются салатовыми — главный акцент */
+.theme-dark .cta{color:var(--ink);box-shadow:0 0 120px rgba(214,243,106,.12)}
+
+/* страница кейса */
+.theme-dark .fact{background:var(--card);border:1px solid var(--edge)}
+.theme-dark .story__item{border-color:rgba(255,255,255,.18)}
+.theme-dark .story__item--lime{color:var(--ink)}
+.theme-dark .next{border-top-color:rgba(255,255,255,.2)}
+.theme-dark .crumbs a{color:var(--ink-text)}
+.theme-dark .about__photo.ph[data-ph]::after{color:var(--muted)}

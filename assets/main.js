@@ -6,6 +6,9 @@ var TG_NICK = 'ТВОЙ_НИК';
 (function () {
   document.documentElement.classList.remove('no-js');
 
+  /* светлая версия для сравнения: добавь к адресу ?light */
+  if (/[?&]light\b/.test(location.search)) document.documentElement.classList.remove('theme-dark');
+
   /* ссылки на Telegram */
   document.querySelectorAll('[data-tg]').forEach(function (a) {
     a.href = 'https://t.me/' + TG_NICK;
@@ -104,7 +107,7 @@ var TG_NICK = 'ТВОЙ_НИК';
   })();
 
   /* светящиеся пятна в тёмных блоках */
-  document.querySelectorAll('.dark, .cta').forEach(function (s) {
+  document.querySelectorAll('.dark, .cta' + (document.documentElement.classList.contains('theme-dark') ? ', .hero' : '')).forEach(function (s) {
     s.insertAdjacentHTML('afterbegin', '<span class="glow glow--1" aria-hidden="true"></span><span class="glow glow--2" aria-hidden="true"></span>');
   });
 
