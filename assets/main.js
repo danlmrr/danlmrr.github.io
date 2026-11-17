@@ -14,6 +14,16 @@ var TG_NICK = 'ТВОЙ_НИК';
     var now = scrollY > 40;
     if (now !== scrolled) { scrolled = now; root.classList.toggle('is-scrolled', now); }
   }
+  /* размеры для «собирающейся» шапки */
+  var bar = document.querySelector('.head__bar');
+  function measure() {
+    if (!bar) return;
+    var full = bar.clientWidth, glass = Math.min(980, full);
+    bar.style.setProperty('--gw', glass + 'px');
+    bar.style.setProperty('--gs', (full / glass).toFixed(4));
+    bar.style.setProperty('--shift', ((full - glass) / 2 + (innerWidth > 720 ? 18 : 10)) + 'px');
+  }
+  measure(); addEventListener('resize', measure);
   onScroll();
   addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
 
