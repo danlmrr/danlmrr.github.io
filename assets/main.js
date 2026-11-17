@@ -8,8 +8,14 @@ var TG_NICK = 'ТВОЙ_НИК';
 
   /* шапка: прозрачная наверху, матовое стекло при прокрутке */
   var root = document.documentElement;
-  function onScroll() { root.classList.toggle('is-scrolled', scrollY > 40); }
-  onScroll(); addEventListener('scroll', onScroll, { passive: true });
+  var scrolled = null, ticking = false;
+  function onScroll() {
+    ticking = false;
+    var now = scrollY > 40;
+    if (now !== scrolled) { scrolled = now; root.classList.toggle('is-scrolled', now); }
+  }
+  onScroll();
+  addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
 
   /* ссылки на Telegram */
   document.querySelectorAll('[data-tg]').forEach(function (a) {
@@ -87,27 +93,9 @@ var TG_NICK = 'ТВОЙ_НИК';
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && lb.classList.contains('is-open')) closeLb(); });
   }
 
-  /* плёночное зерно: шум перерисовывается ~12 раз в секунду, как у плёнки */
-  (function () {
-    var c = document.createElement('canvas'); c.className = 'grain'; c.setAttribute('aria-hidden', 'true');
-    document.body.appendChild(c);
-    var ctx = c.getContext('2d'), T = 256, tiles = [];
-    for (var k = 0; k < 6; k++) {
-      var t = document.createElement('canvas'); t.width = t.height = T;
-      var tc = t.getContext('2d'), d = tc.createImageData(T, T);
-      for (var i = 0; i < d.data.length; i += 4) { var v = Math.random() < 0.5 ? 0 : 255; d.data[i] = d.data[i + 1] = d.data[i + 2] = v; d.data[i + 3] = 255; }
-      tc.putImageData(d, 0, 0); tiles.push(t);
-    }
-    function size() { c.width = innerWidth; c.height = innerHeight; }
-    function draw() {
-      var p = ctx.createPattern(tiles[Math.random() * tiles.length | 0], 'repeat');
-      ctx.save(); ctx.translate(-(Math.random() * T | 0), -(Math.random() * T | 0));
-      ctx.fillStyle = p; ctx.fillRect(0, 0, c.width + T, c.height + T); ctx.restore();
-    }
-    size(); draw(); addEventListener('resize', function () { size(); draw(); });
-    var still = matchMedia('(prefers-reduced-motion: reduce)').matches, last = 0;
-    if (!still) (function loop(ts) { if (ts - last > 80 && !document.hidden) { draw(); last = ts; } requestAnimationFrame(loop); })(0);
-  })();
+  /* плёночное зерно: готовая текстура, движется сдвигом (без перерисовки) */
+  var grain = document.createElement('div'); grain.className = 'grain'; grain.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(grain);
 
   /* светящиеся пятна в тёмных блоках */
   document.querySelectorAll('.dark, .cta' + (document.documentElement.classList.contains('theme-dark') ? ', .hero' : '')).forEach(function (s) {

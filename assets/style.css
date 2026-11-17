@@ -178,11 +178,12 @@ button{font:inherit;color:inherit}
 .nf__title{font-size:clamp(64px,14vw,200px)}
 
 /* ---------- плёночное зерно на фоне (под текстом и карточками) ---------- */
-.grain{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:-1;opacity:.04}
+.grain{position:fixed;left:-128px;top:-128px;right:-128px;bottom:-128px;pointer-events:none;z-index:-1;opacity:.04;background:url(noise.png) 0 0/256px 256px repeat;will-change:transform;animation:grain .7s steps(6) infinite}
+@keyframes grain{0%{transform:translate(0,0)}17%{transform:translate(-61px,37px)}33%{transform:translate(43px,-89px)}50%{transform:translate(-97px,-23px)}67%{transform:translate(71px,83px)}83%{transform:translate(-29px,-113px)}100%{transform:translate(0,0)}}
 
 /* ---------- светящиеся пятна в тёмных блоках ---------- */
 .dark,.cta{position:relative;overflow:hidden;isolation:isolate}
-.glow{position:absolute;border-radius:50%;pointer-events:none;z-index:-1;filter:blur(10px)}
+.glow{position:absolute;border-radius:50%;pointer-events:none;z-index:-1;will-change:transform,opacity}
 .glow--1{width:620px;height:620px;left:-160px;top:-180px;background:radial-gradient(circle,rgba(214,243,106,.22) 0%,rgba(214,243,106,0) 70%);animation:glow1 9s ease-in-out infinite}
 .glow--2{width:720px;height:720px;right:-220px;bottom:-260px;background:radial-gradient(circle,rgba(214,243,106,.16) 0%,rgba(214,243,106,0) 70%);animation:glow2 12s ease-in-out infinite}
 .cta .glow--1{background:radial-gradient(circle,rgba(255,255,255,.55) 0%,rgba(255,255,255,0) 70%)}
@@ -194,7 +195,7 @@ button{font:inherit;color:inherit}
 .rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
 .rv.is-in{opacity:1;transform:none}
 .no-js .rv{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}.glow{animation:none}}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}.glow,.grain{animation:none}}
 
 /* ---------- планшет ---------- */
 @media (max-width:1100px){
@@ -330,13 +331,14 @@ button{font:inherit;color:inherit}
    отзывы (кружки / голосовые / текст), FAQ, RU/EN
    ================================================================= */
 
-/* --- шапка: наверху прозрачная, при прокрутке — матовое стекло --- */
-.head{padding:14px 0;transition:padding .6s cubic-bezier(.22,1,.36,1)}
-.head__bar,.theme-dark .head__bar{max-width:1192px;margin:0 auto;background:transparent;border:1px solid transparent;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none;padding:8px 8px 8px 4px;
-  transition:max-width .6s cubic-bezier(.22,1,.36,1),padding .6s cubic-bezier(.22,1,.36,1),background .4s,border-color .4s,box-shadow .4s}
-.is-scrolled .head{padding:12px 0}
-.is-scrolled .head__bar,.theme-dark.is-scrolled .head__bar{max-width:980px;padding:6px 6px 6px 24px;background:rgba(12,12,11,.62);border-color:rgba(255,255,255,.09);
-  -webkit-backdrop-filter:blur(20px) saturate(140%);backdrop-filter:blur(20px) saturate(140%);box-shadow:0 4px 40px rgba(0,0,0,.5)}
+/* --- шапка: наверху прозрачная, при прокрутке — матовое стекло ---
+   Анимируются только opacity и transform слоя-подложки: это делает видеокарта, без пересчёта страницы. */
+.head{padding:14px 0}
+.head__bar,.theme-dark .head__bar{position:relative;isolation:isolate;max-width:980px;margin:0 auto;background:transparent;border:0;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none;padding:7px 7px 7px 24px}
+.head__bar::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;background:rgba(12,12,11,.62);border:1px solid rgba(255,255,255,.09);box-shadow:0 4px 40px rgba(0,0,0,.5);
+  -webkit-backdrop-filter:blur(20px) saturate(140%);backdrop-filter:blur(20px) saturate(140%);
+  opacity:0;transform:scaleX(1.08) scaleY(1.15);transition:opacity .45s ease,transform .6s cubic-bezier(.22,1,.36,1);will-change:opacity,transform;pointer-events:none}
+.is-scrolled .head__bar::before{opacity:1;transform:none}
 .head__right{display:flex;align-items:center;gap:8px}
 .lang{display:inline-flex;align-items:center;justify-content:center;min-width:44px;height:44px;padding:0 12px;border-radius:999px;border:1px solid rgba(255,255,255,.16);font-size:13px;font-weight:700;letter-spacing:.06em;transition:border-color .2s,background .2s}
 .lang:hover{border-color:var(--lime);color:var(--lime)}
@@ -417,7 +419,6 @@ button{font:inherit;color:inherit}
   .voices{grid-template-columns:1fr 1fr}
 }
 @media (max-width:1024px){
-  .is-scrolled .head__bar,.theme-dark.is-scrolled .head__bar{max-width:100%}
   .results{grid-template-columns:1fr 1fr}
   .results .res:first-child{grid-column:span 2}
 }
@@ -425,8 +426,7 @@ button{font:inherit;color:inherit}
   .head__right .head__tg{display:none}
 }
 @media (max-width:720px){
-  .head__bar,.theme-dark .head__bar{padding:6px 6px 6px 4px}
-  .is-scrolled .head__bar,.theme-dark.is-scrolled .head__bar{padding:6px 6px 6px 16px}
+  .head__bar,.theme-dark .head__bar{padding:6px 6px 6px 16px}
   .tabs{display:flex;width:100%}
   .tab{flex:1;padding:0 10px;font-size:14px}
   .vgrid--v{grid-template-columns:1fr 1fr;gap:12px}
