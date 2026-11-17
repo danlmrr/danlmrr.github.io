@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ttrnkv — Данила Татарников, дизайн и монтаж</title>
+<meta name="description" content="Графический дизайнер и видеомонтажёр из Санкт-Петербурга: айдентика, логотипы, сайты на Tilda, графика, Reels и YouTube-монтаж.">
+<meta property="og:title" content="ttrnkv — Данила Татарников">
+<meta property="og:description" content="Айдентика, логотипы, сайты, графика и монтаж видео.">
+<style>html{scroll-behavior:smooth}body{margin:0;background:#fff}</style>
+<!-- Где менять: ищи слово ЗАМЕНИ. Картинки кейсов кладёшь в этот же репозиторий и пишешь url('имя-файла.jpg'). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+.ttr{--lime:#D6F36A;--ink:#0E0E0E;--paper:#FFFFFF;--soft:#F2F2EE;--muted:#5A5A5A;
+  font-family:'Manrope',Arial,sans-serif;color:var(--ink);background:var(--paper);
+  font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.ttr *,.ttr *::before,.ttr *::after{box-sizing:border-box}
+.ttr h1,.ttr h2,.ttr h3,.ttr p{margin:0}
+.ttr a{color:inherit;text-decoration:none}
+.ttr img{max-width:100%;display:block}
+.ttr-wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+.ttr-disp{font-family:'Unbounded',Arial,sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:-.01em;line-height:1.02}
+.ttr-mk{background:var(--lime);border-radius:999px;padding:.02em .35em;display:inline-block}
+.ttr-sec{padding:96px 0}
+.ttr-sec__head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:40px;flex-wrap:wrap}
+.ttr-sec__title{font-size:clamp(32px,5vw,64px)}
+.ttr-sec__note{max-width:420px;color:var(--muted);font-size:16px}
+.ttr-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;font-weight:700;font-size:16px;border:2px solid var(--ink);transition:transform .2s,background .2s,color .2s}
+.ttr-btn:hover{transform:translateY(-2px)}
+.ttr-btn--dark{background:var(--ink);color:#fff}
+.ttr-btn--dark:hover{background:#2a2a2a}
+.ttr-btn--lime{background:var(--lime);border-color:var(--lime);color:var(--ink)}
+.ttr-btn--ghost{background:transparent}
+.ttr-btn--ghost:hover{background:var(--ink);color:#fff}
+
+/* header */
+.ttr-head{position:sticky;top:0;z-index:50;padding:12px 0}
+.ttr-head__bar{display:flex;align-items:center;justify-content:space-between;gap:16px;background:var(--ink);color:#fff;border-radius:999px;padding:8px 8px 8px 24px}
+.ttr-logo{font-family:'Unbounded',Arial,sans-serif;font-weight:800;font-size:20px;letter-spacing:-.02em}
+.ttr-nav{display:flex;gap:28px;font-size:15px}
+.ttr-nav a{opacity:.8;transition:opacity .2s}.ttr-nav a:hover{opacity:1;color:var(--lime)}
+.ttr-burger{display:none;width:44px;height:44px;border-radius:50%;border:0;background:var(--lime);cursor:pointer;align-items:center;justify-content:center}
+.ttr-burger span{display:block;width:18px;height:2px;background:var(--ink);position:relative}
+.ttr-burger span::before,.ttr-burger span::after{content:"";position:absolute;left:0;width:18px;height:2px;background:var(--ink)}
+.ttr-burger span::before{top:-6px}.ttr-burger span::after{top:6px}
+.ttr-menu{display:none}
+
+/* hero */
+.ttr-hero{padding:72px 0 64px}
+.ttr-hero__title{font-size:clamp(40px,7.4vw,104px)}
+.ttr-hero__row{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;margin-top:48px;align-items:end}
+.ttr-hero__lead{font-size:clamp(18px,1.6vw,22px);max-width:560px}
+.ttr-hero__lead b{font-weight:700}
+.ttr-hero__cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end}
+.ttr-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.ttr-tag{border:1.5px solid var(--ink);border-radius:999px;padding:6px 14px;font-size:14px;font-weight:500}
+
+/* cases */
+.ttr-cases{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.ttr-case{display:flex;flex-direction:column;gap:14px}
+.ttr-case__img{aspect-ratio:4/3;border-radius:24px;background:var(--ink) center/cover no-repeat;position:relative;overflow:hidden;transition:transform .35s}
+.ttr-case__img[style*="url('')"]::after{content:"сюда картинку кейса";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--lime);font-family:'Unbounded',Arial,sans-serif;font-size:14px;text-transform:uppercase;opacity:.7}
+.ttr-case:hover .ttr-case__img{transform:scale(.98)}
+.ttr-case--wide{grid-column:span 2}.ttr-case--wide .ttr-case__img{aspect-ratio:auto;flex:1;min-height:320px}
+.ttr-case__meta{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.ttr-case__name{font-weight:700;font-size:19px}
+.ttr-case__type{font-size:14px;color:var(--muted);white-space:nowrap}
+
+/* video */
+.ttr-dark{background:var(--ink);color:#fff;border-radius:40px;margin:0 12px}
+.ttr-dark .ttr-sec__note{color:#bdbdbd}
+.ttr-videos{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.ttr-video{display:flex;flex-direction:column;gap:12px}
+.ttr-video__box{aspect-ratio:9/16;border-radius:20px;overflow:hidden;background:#1c1c1c}
+.ttr-video--h{grid-column:span 2}.ttr-video--h .ttr-video__box{aspect-ratio:16/9}
+.ttr-video__box iframe{width:100%;height:100%;border:0;display:block}
+.ttr-video__ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--lime);font-family:'Unbounded',Arial,sans-serif;font-size:13px;text-transform:uppercase;border:1.5px dashed #444;border-radius:20px}
+.ttr-video__cap{font-size:15px;color:#d0d0d0}
+.ttr-video__cap b{color:#fff}
+
+/* services */
+.ttr-services{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.ttr-svc{background:var(--soft);border-radius:28px;padding:28px;display:flex;flex-direction:column;gap:12px;min-height:220px;transition:background .25s}
+.ttr-svc:hover{background:var(--lime)}
+.ttr-svc__n{font-family:'Unbounded',Arial,sans-serif;font-weight:800;font-size:15px;opacity:.4}
+.ttr-svc__t{font-family:'Unbounded',Arial,sans-serif;font-weight:800;font-size:22px;text-transform:uppercase;line-height:1.1}
+.ttr-svc__d{font-size:16px;color:#333;margin-top:auto}
+
+/* process */
+.ttr-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:s}
+.ttr-step{border-top:3px solid var(--ink);padding-top:20px;display:flex;flex-direction:column;gap:10px}
+.ttr-step::before{counter-increment:s;content:"0" counter(s);font-family:'Unbounded',Arial,sans-serif;font-weight:800;font-size:40px;line-height:1}
+.ttr-step h3{font-size:19px}
+.ttr-step p{font-size:16px;color:var(--muted)}
+
+/* about */
+.ttr-about{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.ttr-about__text{background:var(--ink);color:#fff;border-radius:32px;padding:40px;display:flex;flex-direction:column;gap:18px}
+.ttr-about__text h2{font-size:clamp(26px,3vw,40px)}
+.ttr-about__text p{color:#d6d6d6}
+.ttr-about__text p b{color:var(--lime);font-weight:700}
+.ttr-stats{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.ttr-stat{background:var(--lime);border-radius:32px;padding:28px;display:flex;flex-direction:column;justify-content:space-between;min-height:200px}
+.ttr-stat:nth-child(2),.ttr-stat:nth-child(3){background:var(--soft)}
+.ttr-stat__n{font-family:'Unbounded',Arial,sans-serif;font-weight:800;font-size:clamp(44px,5vw,72px);line-height:1}
+.ttr-stat__d{font-size:16px;font-weight:500}
+
+/* reviews */
+.ttr-reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.ttr-review{border:2px solid var(--ink);border-radius:28px;padding:28px;display:flex;flex-direction:column;gap:18px}
+.ttr-review p{font-size:17px}
+.ttr-review__who{margin-top:auto;font-weight:700;font-size:15px}
+.ttr-review__who span{display:block;font-weight:400;color:var(--muted)}
+
+/* contact */
+.ttr-cta{background:var(--lime);border-radius:40px;margin:0 12px;padding:80px 0}
+.ttr-cta__title{font-size:clamp(36px,6.4vw,92px)}
+.ttr-cta__row{display:grid;grid-template-columns:1fr auto;gap:32px;margin-top:40px;align-items:end}
+.ttr-cta__links{display:flex;flex-direction:column;gap:6px;font-size:18px;font-weight:500}
+.ttr-cta__links a:hover{text-decoration:underline}
+.ttr-foot{padding:28px 0 36px;font-size:14px;color:var(--muted)}
+.ttr-foot .ttr-wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* reveal */
+.ttr-rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.ttr-rv.is-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.ttr-rv{opacity:1;transform:none;transition:none}}
+
+/* tablet */
+@media (max-width:1024px){
+  .ttr-nav{gap:18px;font-size:14px}
+  .ttr-cases{grid-template-columns:1fr 1fr}
+  .ttr-case--wide{grid-column:span 2}
+  .ttr-videos{grid-template-columns:repeat(2,1fr)}
+  .ttr-services{grid-template-columns:1fr 1fr}
+  .ttr-steps{grid-template-columns:1fr 1fr;row-gap:32px}
+  .ttr-about{grid-template-columns:1fr}
+  .ttr-reviews{grid-template-columns:1fr 1fr}
+}
+/* phone */
+@media (max-width:720px){
+  .ttr{font-size:16px}
+  .ttr-wrap{padding:0 16px}
+  .ttr-sec{padding:64px 0}
+  .ttr-head__bar{padding:6px 6px 6px 18px}
+  .ttr-nav,.ttr-head__tg{display:none}
+  .ttr-burger{display:inline-flex}
+  .ttr-menu.is-open{display:flex;flex-direction:column;gap:4px;background:var(--ink);border-radius:28px;margin-top:8px;padding:12px}
+  .ttr-menu a{color:#fff;padding:12px 14px;font-size:18px;font-weight:500;border-radius:14px}
+  .ttr-menu a:last-child{background:var(--lime);color:var(--ink);text-align:center;margin-top:6px}
+  .ttr-hero{padding:40px 0 48px}
+  .ttr-hero__row{grid-template-columns:1fr;gap:28px;margin-top:28px}
+  .ttr-hero__cta{justify-content:flex-start}
+  .ttr-hero__cta .ttr-btn{flex:1}
+  .ttr-cases{grid-template-columns:1fr}
+  .ttr-case--wide{grid-column:auto}.ttr-case--wide .ttr-case__img{aspect-ratio:4/3;min-height:0}
+  .ttr-dark,.ttr-cta{border-radius:28px;margin:0 8px}
+  .ttr-videos{grid-template-columns:1fr 1fr;gap:12px}
+  .ttr-video--h{grid-column:span 2}
+  .ttr-services{grid-template-columns:1fr}
+  .ttr-svc{min-height:0}
+  .ttr-steps{grid-template-columns:1fr}
+  .ttr-about__text{padding:28px}
+  .ttr-stats{gap:12px}
+  .ttr-stat{min-height:150px;padding:20px;border-radius:24px}
+  .ttr-reviews{grid-template-columns:1fr}
+  .ttr-cta{padding:56px 0}
+  .ttr-cta__row{grid-template-columns:1fr}
+  .ttr-cta__row .ttr-btn{width:100%}
+}
+</style>
+
+</head>
+<body>
+<div class="ttr" id="ttr-top">
+
+  <!-- ШАПКА -->
+  <header class="ttr-head">
+    <div class="ttr-wrap">
+      <div class="ttr-head__bar">
+        <a class="ttr-logo" href="#ttr-top">ttrnkv</a>
+        <nav class="ttr-nav" aria-label="Меню">
+          <a href="#ttr-work">Работы</a>
+          <a href="#ttr-video">Монтаж</a>
+          <a href="#ttr-services">Услуги</a>
+          <a href="#ttr-about">Обо мне</a>
+          <a href="#ttr-contact">Контакты</a>
+        </nav>
+        <!-- ЗАМЕНИ ник Telegram -->
+        <a class="ttr-btn ttr-btn--lime ttr-head__tg" href="https://t.me/ТВОЙ_НИК" target="_blank" rel="noopener">Написать в Telegram</a>
+        <button class="ttr-burger" type="button" aria-label="Открыть меню" aria-expanded="false"><span></span></button>
+      </div>
+      <nav class="ttr-menu" aria-label="Мобильное меню">
+        <a href="#ttr-work">Работы</a>
+        <a href="#ttr-video">Монтаж</a>
+        <a href="#ttr-services">Услуги</a>
+        <a href="#ttr-about">Обо мне</a>
+        <a href="https://t.me/ТВОЙ_НИК" target="_blank" rel="noopener">Написать в Telegram</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ПЕРВЫЙ ЭКРАН -->
+  <section class="ttr-hero">
+    <div class="ttr-wrap">
+      <h1 class="ttr-disp ttr-hero__title">Дизайн для тех,<br>кому важен <span class="ttr-mk">стиль</span><br>и результат</h1>
+      <div class="ttr-hero__row">
+        <div>
+          <p class="ttr-hero__lead"><b>Данила Татарников</b> — графический дизайнер и видеомонтажёр из Санкт-Петербурга. Делаю айдентику, сайты на Tilda, графику и ролики, чтобы бизнес выглядел цельно и вызывал доверие.</p>
+          <div class="ttr-tags">
+            <span class="ttr-tag">Айдентика</span><span class="ttr-tag">Логотипы</span><span class="ttr-tag">Сайты на Tilda</span><span class="ttr-tag">Предпечатка</span><span class="ttr-tag">Reels / Shorts</span><span class="ttr-tag">YouTube-монтаж</span>
+          </div>
+        </div>
+        <div class="ttr-hero__cta">
+          <a class="ttr-btn ttr-btn--ghost" href="#ttr-work">Смотреть работы</a>
+          <a class="ttr-btn ttr-btn--dark" href="https://t.me/ТВОЙ_НИК" target="_blank" rel="noopener">Обсудить проект →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- РАБОТЫ. Каждый кейс: картинка в url(''), название, тип.
+       Если у кейса есть отдельная страница в Тильде — впиши её адрес в href. -->
+  <section class="ttr-sec" id="ttr-work" style="padding-top:32px">
+    <div class="ttr-wrap">
+      <div class="ttr-sec__head">
+        <h2 class="ttr-disp ttr-sec__title">Работы</h2>
+        <p class="ttr-sec__note">Избранные проекты: айдентика, логотипы, полиграфия и графика для соцсетей.</p>
+      </div>
+      <div class="ttr-cases">
+        <a class="ttr-case ttr-case--wide ttr-rv" href="#">
+          <div class="ttr-case__img" style="background-image:url('')"></div><!-- ЗАМЕНИ картинку -->
+          <div class="ttr-case__meta"><span class="ttr-case__name">[Название проекта 1]</span><span class="ttr-case__type">Айдентика</span></div>
+        </a>
+        <a class="ttr-case ttr-rv" href="#">
+          <div class="ttr-case__img" style="background-image:url('')"></div><!-- ЗАМЕНИ картинку -->
+          <div class="ttr-case__meta"><span class="ttr-case__name">[Название проекта 2]</span><span class="ttr-case__type">Логотип</span></div>
+        </a>
+        <a class="ttr-case ttr-rv" href="#">
+          <div class="ttr-case__img" style="background-image:url('')"></div><!-- ЗАМЕНИ картинку -->
+          <div class="ttr-case__meta"><span class="ttr-case__name">[Название проекта 3]</span><span class="ttr-case__type">Полиграфия</span></div>
+        </a>
+        <a class="ttr-case ttr-rv" href="#">
+          <div class="ttr-case__img" style="background-image:url('')"></div><!-- ЗАМЕНИ картинку -->
+          <div class="ttr-case__meta"><span class="ttr-case__name">АВК × ЕБАНЬКО RACING</span><span class="ttr-case__type">Реклама для соцсетей</span></div>
+        </a>
+        <a class="ttr-case ttr-rv" href="#">
+          <div class="ttr-case__img" style="background-image:url('')"></div><!-- ЗАМЕНИ картинку -->
+          <div class="ttr-case__meta"><span class="ttr-case__name">[Название проекта 5]</span><span class="ttr-case__type">Упаковка бренда</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- МОНТАЖ. Замени каждый <div class="ttr-video__ph">…</div> на код встраивания
+       (VK Видео: Поделиться → Экспортировать → скопировать <iframe>; Rutube: Поделиться → Код вставки). -->
+  <section class="ttr-sec ttr-dark" id="ttr-video">
+    <div class="ttr-wrap">
+      <div class="ttr-sec__head">
+        <h2 class="ttr-disp ttr-sec__title">Монтаж</h2>
+        <p class="ttr-sec__note">Reels и Shorts под удержание, разговорные YouTube-ролики со вставками, картами и выделением цитат.</p>
+      </div>
+      <div class="ttr-videos">
+        <div class="ttr-video ttr-video--h ttr-rv">
+          <div class="ttr-video__box"><div class="ttr-video__ph">Шоурил 30–60 сек<br>(горизонтальное видео)</div></div>
+          <p class="ttr-video__cap"><b>Шоурил</b> — лучшие моменты монтажа</p>
+        </div>
+        <div class="ttr-video ttr-rv">
+          <div class="ttr-video__box"><div class="ttr-video__ph">Reels<br>ТАТАРНИКОВЫ</div></div>
+          <p class="ttr-video__cap"><b>Скетч</b> — ~1,5 млн просмотров</p>
+        </div>
+        <div class="ttr-video ttr-rv">
+          <div class="ttr-video__box"><div class="ttr-video__ph">Shorts<br>«Дело №…»</div></div>
+          <p class="ttr-video__cap"><b>True crime</b> — сценарий, съёмка, монтаж</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- УСЛУГИ -->
+  <section class="ttr-sec" id="ttr-services">
+    <div class="ttr-wrap">
+      <div class="ttr-sec__head">
+        <h2 class="ttr-disp ttr-sec__title">Что я делаю</h2>
+        <p class="ttr-sec__note">От логотипа до готового ролика — визуал, который выглядит как один цельный бренд.</p>
+      </div>
+      <div class="ttr-services">
+        <div class="ttr-svc ttr-rv"><span class="ttr-svc__n">01</span><h3 class="ttr-svc__t">Айдентика</h3><p class="ttr-svc__d">Логотип, цвета, шрифты, паттерны и правила, по которым бренд узнают.</p></div>
+        <div class="ttr-svc ttr-rv"><span class="ttr-svc__n">02</span><h3 class="ttr-svc__t">Сайты на Tilda</h3><p class="ttr-svc__d">Структура, дизайн, анимации и адаптив — понятный сайт, на котором легко оставить заявку.</p></div>
+        <div class="ttr-svc ttr-rv"><span class="ttr-svc__n">03</span><h3 class="ttr-svc__t">Графика</h3><p class="ttr-svc__d">Баннеры, обложки, визуалы для соцсетей и презентации.</p></div>
+        <div class="ttr-svc ttr-rv"><span class="ttr-svc__n">04</span><h3 class="ttr-svc__t">Полиграфия</h3><p class="ttr-svc__d">Визитки, листовки, меню, наклейки, упаковка — с предпечатной подготовкой для типографии.</p></div>
+        <div class="ttr-svc ttr-rv"><span class="ttr-svc__n">05</span><h3 class="ttr-svc__t">Упаковка бренда</h3><p class="ttr-svc__d">Тон общения, визуальная логика и правила использования стиля.</p></div>
+        <div class="ttr-svc ttr-rv"><span class="ttr-svc__n">06</span><h3 class="ttr-svc__t">Монтаж видео</h3><p class="ttr-svc__d">Reels, Shorts, YouTube-ролики, тизеры и промо.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- КАК РАБОТАЮ -->
+  <section class="ttr-sec" style="padding-top:0">
+    <div class="ttr-wrap">
+      <div class="ttr-sec__head"><h2 class="ttr-disp ttr-sec__title">Как я работаю</h2></div>
+      <div class="ttr-steps">
+        <div class="ttr-step ttr-rv"><h3>Разбираю задачу</h3><p>Изучаю нишу, собираю референсы, обсуждаем цели и сроки.</p></div>
+        <div class="ttr-step ttr-rv"><h3>Делаю решение</h3><p>Композиция, стиль, структура — показываю концепцию до финала.</p></div>
+        <div class="ttr-step ttr-rv"><h3>Вношу правки</h3><p>Дорабатываю, адаптирую под форматы, готовлю файлы.</p></div>
+        <div class="ttr-step ttr-rv"><h3>Помогаю запустить</h3><p>Размещаю на сайте или в соцсетях, слежу, чтобы всё выглядело как задумано.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ОБО МНЕ. ЗАМЕНИ цифры на свои реальные -->
+  <section class="ttr-sec" id="ttr-about" style="padding-top:0">
+    <div class="ttr-wrap ttr-about">
+      <div class="ttr-about__text ttr-rv">
+        <h2 class="ttr-disp">Кто я</h2>
+        <p>Данила Татарников, дизайнер и монтажёр. Работаю с малым бизнесом, экспертами, локальными брендами и YouTube-проектами.</p>
+        <p>Я верю, что дизайн должен не просто украшать, а помогать бизнесу <b>выглядеть сильнее и вызывать доверие</b>.</p>
+        <p>Мой подход — чистый стиль, погружение в задачу и работа до результата, которым хочется гордиться.</p>
+      </div>
+      <div class="ttr-stats">
+        <div class="ttr-stat ttr-rv"><span class="ttr-stat__n">2+</span><span class="ttr-stat__d">года в графическом дизайне</span></div>
+        <div class="ttr-stat ttr-rv"><span class="ttr-stat__n">[N]+</span><span class="ttr-stat__d">проектов: айдентика, сайты, графика</span></div>
+        <div class="ttr-stat ttr-rv"><span class="ttr-stat__n">[N]+</span><span class="ttr-stat__d">клиентов вернулись повторно</span></div>
+        <div class="ttr-stat ttr-rv"><span class="ttr-stat__n">1,5М</span><span class="ttr-stat__d">просмотров у лучшего ролика</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ОТЗЫВЫ. Если отзывов пока нет — удали всю секцию от этой строки до «конец отзывов». -->
+  <section class="ttr-sec" id="ttr-reviews" style="padding-top:0">
+    <div class="ttr-wrap">
+      <div class="ttr-sec__head"><h2 class="ttr-disp ttr-sec__title">Отзывы</h2></div>
+      <div class="ttr-reviews">
+        <div class="ttr-review ttr-rv"><p>«[Текст отзыва клиента]»</p><p class="ttr-review__who">[Имя]<span>[Компания / проект]</span></p></div>
+        <div class="ttr-review ttr-rv"><p>«[Текст отзыва клиента]»</p><p class="ttr-review__who">[Имя]<span>[Компания / проект]</span></p></div>
+        <div class="ttr-review ttr-rv"><p>«[Текст отзыва клиента]»</p><p class="ttr-review__who">[Имя]<span>[Компания / проект]</span></p></div>
+      </div>
+    </div>
+  </section>
+  <!-- конец отзывов -->
+
+  <!-- КОНТАКТЫ -->
+  <section class="ttr-cta" id="ttr-contact">
+    <div class="ttr-wrap">
+      <h2 class="ttr-disp ttr-cta__title">Обсудим<br>ваш проект?</h2>
+      <div class="ttr-cta__row">
+        <div class="ttr-cta__links">
+          <a href="tel:+79105324254">+7 (910) 532-42-54</a>
+          <a href="mailto:tatarnikovdanil49@gmail.com">tatarnikovdanil49@gmail.com</a>
+          <span>Санкт-Петербург · работаю удалённо</span>
+        </div>
+        <a class="ttr-btn ttr-btn--dark" href="https://t.me/ТВОЙ_НИК" target="_blank" rel="noopener">Написать в Telegram →</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="ttr-foot">
+    <div class="ttr-wrap"><span>© 2026 ttrnkv · Данила Татарников</span><a href="#ttr-top">Наверх ↑</a></div>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var root=document.querySelector('.ttr');if(!root)return;
+  var b=root.querySelector('.ttr-burger'),m=root.querySelector('.ttr-menu');
+  if(b&&m){
+    b.addEventListener('click',function(){var o=m.classList.toggle('is-open');b.setAttribute('aria-expanded',o)});
+    m.addEventListener('click',function(e){if(e.target.tagName==='A'){m.classList.remove('is-open');b.setAttribute('aria-expanded','false')}});
+  }
+  root.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){var id=a.getAttribute('href');if(id.length<2){e.preventDefault();return;}var t=document.querySelector(id);if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}});
+  });
+  var els=root.querySelectorAll('.ttr-rv');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('is-in');io.unobserve(x.target)}})},{threshold:.12});
+    els.forEach(function(el){io.observe(el)});
+  }else{els.forEach(function(el){el.classList.add('is-in')})}
+})();
+</script>
+
+</body>
+</html>
