@@ -331,14 +331,18 @@ button{font:inherit;color:inherit}
    отзывы (кружки / голосовые / текст), FAQ, RU/EN
    ================================================================= */
 
-/* --- шапка: наверху прозрачная, при прокрутке — матовое стекло ---
-   Анимируются только opacity и transform слоя-подложки: это делает видеокарта, без пересчёта страницы. */
-.head{padding:14px 0}
-.head__bar,.theme-dark .head__bar{position:relative;isolation:isolate;max-width:980px;margin:0 auto;background:transparent;border:0;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none;padding:7px 7px 7px 24px}
+/* --- шапка: наверху прозрачная и широкая, при прокрутке — сужается в матовое стекло ---
+   Оптимизация: шапка изолирована от страницы (contain), стекло — отдельный слой, который только проявляется. */
+.head{padding:14px 0;contain:layout style}
+.head__bar,.theme-dark .head__bar{position:relative;isolation:isolate;max-width:1192px;margin:0 auto;background:transparent;border:0;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none;padding:8px 8px 8px 4px;
+  transition:max-width .6s cubic-bezier(.22,1,.36,1),padding .6s cubic-bezier(.22,1,.36,1)}
 .head__bar::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;background:rgba(12,12,11,.62);border:1px solid rgba(255,255,255,.09);box-shadow:0 4px 40px rgba(0,0,0,.5);
   -webkit-backdrop-filter:blur(20px) saturate(140%);backdrop-filter:blur(20px) saturate(140%);
-  opacity:0;transform:scaleX(1.08) scaleY(1.15);transition:opacity .45s ease,transform .6s cubic-bezier(.22,1,.36,1);will-change:opacity,transform;pointer-events:none}
-.is-scrolled .head__bar::before{opacity:1;transform:none}
+  opacity:0;transition:opacity .4s ease;pointer-events:none}
+.is-scrolled .head__bar,.theme-dark.is-scrolled .head__bar{max-width:980px;padding:6px 6px 6px 24px}
+.is-scrolled .head__bar::before{opacity:1}
+@media (max-width:1024px){.is-scrolled .head__bar,.theme-dark.is-scrolled .head__bar{max-width:100%}}
+@media (max-width:720px){.head__bar,.theme-dark .head__bar{padding:6px 6px 6px 4px}.is-scrolled .head__bar,.theme-dark.is-scrolled .head__bar{padding:6px 6px 6px 16px}}
 .head__right{display:flex;align-items:center;gap:8px}
 .lang{display:inline-flex;align-items:center;justify-content:center;min-width:44px;height:44px;padding:0 12px;border-radius:999px;border:1px solid rgba(255,255,255,.16);font-size:13px;font-weight:700;letter-spacing:.06em;transition:border-color .2s,background .2s}
 .lang:hover{border-color:var(--lime);color:var(--lime)}
@@ -426,7 +430,6 @@ button{font:inherit;color:inherit}
   .head__right .head__tg{display:none}
 }
 @media (max-width:720px){
-  .head__bar,.theme-dark .head__bar{padding:6px 6px 6px 16px}
   .tabs{display:flex;width:100%}
   .tab{flex:1;padding:0 10px;font-size:14px}
   .vgrid--v{grid-template-columns:1fr 1fr;gap:12px}
