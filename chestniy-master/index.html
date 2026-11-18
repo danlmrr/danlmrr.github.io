@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Честный мастер, автосервис на Индустриальном</title>
+<meta name="description" content="Автосервис «Честный мастер» в Санкт-Петербурге: ремонт двигателей и АКПП, кузовной ремонт и покраска, антикор, автоэлектрика, осмотр авто перед покупкой. Индустриальный проспект, 66Б.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Идея: тёмный бокс, синий свет из-под машины. Машина наполовину в грунте, наполовину покрашена. */
+:root{
+  --bg:#060709;
+  --panel:#141821;
+  --panel-2:#1b2030;
+  --line:rgba(255,255,255,.08);
+  --text:#eef1f7;
+  --muted:#98a0b3;
+  --blue:#3a63e0;
+  --blue-hi:#6f93ff;
+  --font:"Onest", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --r:18px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);font-size:17px;line-height:1.55;overflow-x:hidden}
+a{color:inherit}
+svg{display:block}
+h1,h2,h3{margin:0;font-weight:500;text-transform:uppercase;letter-spacing:.01em;line-height:1.08;text-wrap:balance}
+h2{font-size:clamp(28px,4.2vw,46px)}
+h3{font-size:16px;font-weight:600;letter-spacing:.03em}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+:focus-visible{outline:2px solid var(--blue-hi);outline-offset:3px;border-radius:8px}
+.glow{position:relative;isolation:isolate}
+.glow:before{content:"";position:absolute;z-index:-1;inset:0;pointer-events:none;background:radial-gradient(60% 55% at 50% 55%,rgba(58,99,224,.38),transparent 70%)}
+
+.demo{background:#1d2742;color:#c9d4ff;font-size:13px;text-align:center;padding:7px 16px}
+
+header{position:sticky;top:0;z-index:30;background:rgba(6,7,9,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:28px;height:70px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:15px}
+.logo i{width:30px;height:30px;border-radius:8px;background:var(--blue);display:grid;place-items:center;font-style:normal;font-size:12px}
+nav{display:flex;gap:26px;margin:0 auto;font-size:14px;color:var(--muted)}
+nav a{text-decoration:none}
+nav a:hover{color:var(--text)}
+.phone{font-weight:600;text-decoration:none;white-space:nowrap;font-variant-numeric:tabular-nums}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 24px;border-radius:999px;font:600 15px/1 var(--font);text-decoration:none;border:1px solid transparent;transition:background .2s,transform .2s;white-space:nowrap}
+.btn:hover{transform:translateY(-1px)}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-blue:hover{background:#4a73f0}
+.btn-white{background:#fff;color:#0b0d12}
+.btn-line{border-color:rgba(255,255,255,.22);color:var(--text)}
+.btn-line:hover{background:rgba(255,255,255,.06)}
+.bar .btn{min-height:40px;padding:0 18px;font-size:14px}
+
+/* HERO */
+.hero{padding:72px 0 40px;text-align:center}
+.hero .tag{display:inline-flex;gap:8px;align-items:center;font-size:14px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:7px 14px}
+.hero .tag b{color:var(--blue-hi);font-weight:600}
+.hero h1{font-size:clamp(34px,6vw,68px);margin:26px auto 18px;max-width:15ch}
+.hero p{color:var(--muted);max-width:52ch;margin:0 auto 30px;font-size:18px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.car{display:block;width:min(1080px,100%);height:auto;margin:18px auto 0;-webkit-mask-image:radial-gradient(ellipse 72% 80% at 50% 52%,#000 58%,transparent 100%);mask-image:radial-gradient(ellipse 72% 80% at 50% 52%,#000 58%,transparent 100%)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-top:24px}
+.stats div{background:var(--bg);padding:22px 20px;text-align:left}
+.stats strong{display:block;font-size:30px;font-weight:600;font-variant-numeric:tabular-nums}
+.stats span{color:var(--muted);font-size:14px}
+
+section{padding:96px 0}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.split p{color:var(--muted);margin:0 0 16px}
+.sub{color:var(--muted);margin:14px 0 0;max-width:52ch}
+
+/* УСЛУГИ */
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px}
+.svc{position:relative;overflow:hidden;background:#000 var(--img) right bottom/cover no-repeat;border:1px solid var(--line);border-radius:var(--r);padding:24px;min-height:300px;display:flex;flex-direction:column;text-decoration:none;transition:border-color .2s}
+.svc:before{content:"";position:absolute;inset:0;background:linear-gradient(160deg,rgba(6,7,9,.95) 18%,rgba(6,7,9,.45) 50%,rgba(6,7,9,0) 80%),linear-gradient(0deg,rgba(6,7,9,.9),rgba(6,7,9,0) 42%);transition:opacity .3s}
+.svc>*{position:relative}
+.svc:hover:before{opacity:.85}
+.svc:hover{border-color:rgba(111,147,255,.45)}
+.svc h3{max-width:16ch}
+.svc .price{margin-top:auto;font-size:24px;font-weight:600;font-variant-numeric:tabular-nums}
+.svc .price small{font-size:13px;color:var(--muted);font-weight:400}
+.svc .more{font-size:13px;color:#c3c9d6;margin-top:4px}
+.svc.ask{background:var(--blue);border-color:var(--blue)}
+.svc.ask:before{display:none}
+.svc.ask p{margin:10px 0 0;color:#dfe6ff;font-size:15px;max-width:30ch}
+.svc.ask .btn{margin-top:auto;align-self:flex-start}
+.also{margin-top:18px;color:var(--muted);font-size:14px}
+
+/* ОСМОТР */
+.check{background:var(--panel);border:1px solid var(--line);border-radius:28px;padding:48px;display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.tiers{margin-top:26px;border-top:1px solid var(--line)}
+.tier{display:flex;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+.tier b{font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+.list{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.list li{display:grid;grid-template-columns:26px 1fr;gap:12px;color:#d5dae6}
+.list li:before{content:"";width:18px;height:18px;margin-top:3px;border-radius:50%;background:radial-gradient(circle,var(--blue-hi) 0 4px,rgba(58,99,224,.25) 5px)}
+
+/* ПОЧЕМУ */
+.why-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:40px;align-items:start}
+.why{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.why div{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:24px}
+.why h3{margin-bottom:10px}
+.why p{margin:0;color:var(--muted);font-size:15px}
+
+/* ЭТАПЫ */
+.steps{list-style:none;padding:0;margin:40px 0 0;display:grid;grid-template-columns:repeat(5,1fr);gap:14px;counter-reset:s}
+.steps li{counter-increment:s;border-top:2px solid var(--blue);padding-top:18px}
+.steps li:before{content:"0" counter(s);display:block;color:var(--blue-hi);font-weight:600;margin-bottom:8px;font-variant-numeric:tabular-nums}
+.steps b{display:block;text-transform:uppercase;letter-spacing:.03em;font-size:15px;margin-bottom:6px}
+.steps span{color:var(--muted);font-size:15px}
+
+/* ФИНАЛ */
+.final{text-align:center;padding:110px 0 40px}
+.final p{color:var(--muted);max-width:48ch;margin:16px auto 30px}
+.contact{display:grid;grid-template-columns:.9fr 1.1fr;gap:14px;margin-top:64px;text-align:left}
+.info{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:30px;display:grid;gap:20px;align-content:start}
+.label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+.big{font-size:22px;font-weight:600}
+.info p{margin:6px 0 0;color:var(--muted);font-size:15px}
+.info .cta{justify-content:flex-start}
+.map{border-radius:var(--r);overflow:hidden;min-height:380px;background:var(--panel);border:1px solid var(--line);position:relative}
+.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+footer{border-top:1px solid var(--line);color:var(--muted);font-size:14px;padding:28px 0 100px;margin-top:80px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+
+.mobile-call{display:none}
+@media (max-width:960px){
+  nav{display:none}
+  .bar{justify-content:space-between}
+  .services{grid-template-columns:1fr 1fr}
+  .split,.check,.why-grid,.contact{grid-template-columns:1fr}
+  .check{padding:28px}
+  .steps{grid-template-columns:1fr 1fr}
+}
+@media (max-width:600px){
+  body{font-size:16px}
+  section{padding:64px 0}
+  .bar .btn,.phone{display:none}
+  .hero{padding-top:48px}
+  .stats{grid-template-columns:1fr}
+  .services,.why,.steps{grid-template-columns:1fr}
+  .svc{min-height:260px}
+  .mobile-call{display:flex;position:fixed;left:12px;right:12px;bottom:12px;z-index:40;gap:8px}
+  .mobile-call .btn{flex:1;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+}
+</style>
+</head>
+<body>
+
+<div class="demo">Демо-версия сайта для автосервиса «Честный мастер». Подготовлено для показа владельцу, это не официальный сайт.</div>
+
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#top"><i>ЧМ</i>Честный мастер</a>
+    <nav>
+      <a href="#services">Услуги и цены</a>
+      <a href="#check">Осмотр авто</a>
+      <a href="#why">О сервисе</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <a class="phone" href="tel:+79117250011">+7 911 725-00-11</a>
+    <a class="btn btn-white" href="https://wa.me/79117250011">Записаться</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero glow" style="padding-bottom:40px">
+    <div class="wrap">
+      <span class="tag"><b>5,0</b> в Яндекс Картах · 916 оценок</span>
+      <h1>Чиним честно. Платите за результат</h1>
+      <p>Автосервис на Индустриальном, 66Б. Двигатели, АКПП, подвеска, электрика, кузов и покраска. Сначала говорим, что критично, а что может подождать.</p>
+      <div class="cta">
+        <a class="btn btn-blue" href="tel:+79117250011">Позвонить и записаться</a>
+        <a class="btn btn-line" href="#services">Посмотреть цены</a>
+      </div>
+
+      <img class="car" src="img/hero-m5.jpg" width="1800" height="1013" alt="Седан: передняя половина кузова в сером грунте, задняя покрашена в синий" fetchpriority="high">
+
+      <div class="stats">
+        <div><strong>2020–2026</strong><span>«Хорошее место» от Яндекса каждый год</span></div>
+        <div><strong>770 м²</strong><span>слесарный и малярно-кузовной цеха</span></div>
+        <div><strong>до 21:00</strong><span>принимаем машины, можно подождать в зоне ожидания</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap split">
+      <h2>Обслуживаем иномарки и отечественные авто</h2>
+      <div>
+        <p>Не пускаем пыль в глаза, а решаем обычные проблемы машин: чиним моторы, подвеску, электрику, тормоза и АКПП, делаем сварку, кузовной ремонт и покраску.</p>
+        <p>Присылаем фото и видео дефектов и готовой работы. Запчасти подбираем сами, наценка символическая, доставка в тот же день.</p>
+        <a class="btn btn-line" href="#why">Почему нам доверяют</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" style="padding-top:0">
+    <div class="wrap">
+      <h2>Услуги и цены</h2>
+      <p class="sub">Цены стартовые. Точную сумму называем после осмотра и согласуем с вами до начала работ.</p>
+
+      <div class="services">
+        <a class="svc" style="--img:url(img/body.jpg)" href="tel:+79117250011">
+          <h3>Кузовной ремонт и покраска</h3>
+          <div class="price"><small>от</small> 15 000 ₽</div><div class="more">Свой малярно-кузовной цех 320 м²</div>
+        </a>
+        <a class="svc" style="--img:url(img/anticor.jpg)" href="tel:+79117250011">
+          <h3>Антикор днища и арок</h3>
+          <div class="price"><small>от</small> 45 000 ₽</div><div class="more">Эпоксидный грунт + битум, 2 дня</div>
+        </a>
+        <a class="svc" style="--img:url(img/timing.jpg)" href="tel:+79117250011">
+          <h3>Замена ремня и цепи ГРМ</h3>
+          <div class="price"><small>от</small> 8 000 ₽</div><div class="more">С подбором оригинала или аналога</div>
+        </a>
+        <a class="svc" style="--img:url(img/atf.jpg)" href="tel:+79117250011">
+          <h3>Замена масла АКПП и вариатора</h3>
+          <div class="price"><small>от</small> 3 500 ₽</div><div class="more">Со снятием поддона или аппаратно от 5 000 ₽</div>
+        </a>
+        <a class="svc" style="--img:url(img/electric.jpg)" href="tel:+79117250011">
+          <h3>Автоэлектрика и диагностика</h3>
+          <div class="price"><small>от</small> 5 000 ₽</div><div class="more">Сложные случаи, ЭБУ, утечки тока</div>
+        </a>
+        <a class="svc" style="--img:url(img/ac.jpg)" href="tel:+79117250011">
+          <h3>Заправка кондиционера</h3>
+          <div class="price">3 500 ₽</div><div class="more">До 500 г фреона, проверка на утечки</div>
+        </a>
+        <a class="svc" style="--img:url(img/alignment.jpg)" href="tel:+79117250011">
+          <h3>Развал-схождение</h3>
+          <div class="price">2 500 ₽</div><div class="more">На 3D-стенде</div>
+        </a>
+        <a class="svc" style="--img:url(img/radiator.jpg)" href="tel:+79117250011">
+          <h3>Мойка радиаторов</h3>
+          <div class="price">6 500 ₽</div><div class="more">Когда машина греется летом</div>
+        </a>
+        <div class="svc ask">
+          <h3>Не нашли свою поломку?</h3>
+          <p>Опишите, что случилось, и мы скажем примерную цену и когда можно приехать.</p>
+          <a class="btn btn-white" href="https://wa.me/79117250011">Написать в WhatsApp</a>
+        </div>
+      </div>
+      <p class="also">Также: ТО, подвеска и тормоза, сварка, шиномонтаж, защитная сетка на бампер от 3 500 ₽.</p>
+    </div>
+  </section>
+
+  <section id="check" style="padding-top:0">
+    <div class="wrap check">
+      <div>
+        <h2>Проверим машину до покупки</h2>
+        <p class="sub">Договоритесь с продавцом и привезите авто к нам. Мы не работаем с перекупами и продавцами, поэтому говорим как есть.</p>
+        <div class="tiers">
+          <div class="tier"><span>Осмотр на нашем СТО</span><b>2 500 ₽</b></div>
+          <div class="tier"><span>Выезд эксперта к машине</span><b>6 000 ₽</b></div>
+          <div class="tier"><span>Подбор под ключ, 3–5 осмотров</span><b>от 35 000 ₽</b></div>
+        </div>
+      </div>
+      <ul class="list">
+        <li>Тест-драйв нашим мастером: коробка, двигатель, подвеска</li>
+        <li>Осмотр на подъёмнике, течи, состояние жидкостей</li>
+        <li>Толщиномер по всему кузову</li>
+        <li>Днище, подрамники и места, где обычно гниёт</li>
+        <li>Компьютерная диагностика и чтение ошибок</li>
+        <li>Расчёт вложений в машину на ближайшее время</li>
+        <li>Фото и видео отчёт по неисправностям</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="why" style="padding-top:0">
+    <div class="wrap why-grid">
+      <div>
+        <h2>Почему к нам возвращаются</h2>
+        <p class="sub">Идеальных сервисов нет. Мы тоже ошибаемся, но свои ошибки исправляем и берём оплату только за результат.</p>
+      </div>
+      <div class="why">
+        <div><h3>Честная диагностика</h3><p>Смотрим на подъёмнике и под капотом. Объясняем, что чинить сейчас, а с чем можно ездить.</p></div>
+        <div><h3>Фото и видео отчёты</h3><p>Показываем дефекты и готовую работу, даже если вы не стоите рядом.</p></div>
+        <div><h3>Запчасти дешевле розницы</h3><p>Подбираем профессионально, своя доставка в тот же день.</p></div>
+        <div><h3>Оборудование 2022 года</h3><p>Подъёмники Launch, 3D-стенд развал-схождения, станции для кондиционеров и АКПП.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <h2>Как проходит ремонт</h2>
+      <ol class="steps">
+        <li><b>Запись</b><span>Звоните или пишите, подберём время.</span></li>
+        <li><b>Диагностика</b><span>Находим причину, говорим, что критично.</span></li>
+        <li><b>Смета</b><span>Согласуем цену и запчасти до начала работ.</span></li>
+        <li><b>Ремонт</b><span>Ждёте у нас или забираете по готовности.</span></li>
+        <li><b>Оплата</b><span>Только за результат.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="contacts" class="final glow">
+    <div class="wrap">
+      <h2>Приезжайте на диагностику</h2>
+      <p>Позвоните или напишите, расскажите, что с машиной. Подскажем примерную цену и запишем на удобное время.</p>
+      <div class="cta">
+        <a class="btn btn-blue" href="tel:+79117250011">+7 911 725-00-11</a>
+        <a class="btn btn-line" href="https://t.me/+79117250011">Telegram</a>
+        <a class="btn btn-line" href="https://wa.me/79117250011">WhatsApp</a>
+      </div>
+
+      <div class="contact">
+        <div class="info">
+          <div><div class="label">Адрес</div><div class="big">Индустриальный проспект, 66Б</div><p>Дверь под козырьком рядом с окошком, офис с торца белого здания.</p></div>
+          <div><div class="label">Режим</div><div class="big">Принимаем до 21:00</div><p>Работаем по предварительной записи.</p></div>
+          <div class="cta">
+            <a class="btn btn-line" href="https://yandex.ru/maps/org/chestny_master/178660768601/">Маршрут в Яндекс Картах</a>
+            <a class="btn btn-line" href="https://vk.ru/avtoservis_chest_m">VK</a>
+          </div>
+        </div>
+        <div class="map">
+          <iframe title="Карта: Индустриальный проспект, 66Б" src="https://yandex.ru/map-widget/v1/?ll=30.456410%2C59.969335&amp;z=16&amp;oid=178660768601&amp;ol=biz" loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Честный мастер · автосервис и запчасти · Санкт-Петербург, Индустриальный проспект, 66Б</span>
+    <span>Демо-сайт: ttrnkv, Telegram @danlmr</span>
+  </div>
+</footer>
+
+<div class="mobile-call">
+  <a class="btn btn-blue" href="tel:+79117250011">Позвонить</a>
+  <a class="btn btn-white" href="https://wa.me/79117250011">WhatsApp</a>
+</div>
+
+</body>
+</html>
