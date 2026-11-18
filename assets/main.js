@@ -1,7 +1,7 @@
 /* ttrnkv — общий скрипт сайта */
 
 /* ЗАМЕНИ: ник в Telegram без @. Все кнопки «Написать» на сайте возьмут его отсюда. */
-var TG_NICK = 'ТВОЙ_НИК';
+var TG_NICK = 'danlmr';
 
 (function () {
   document.documentElement.classList.remove('no-js');
