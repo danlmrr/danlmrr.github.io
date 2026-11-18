@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="img/favicon.png">
 <meta name="robots" content="noindex, nofollow">
 <title>Честный мастер, автосервис на Индустриальном</title>
 <meta name="description" content="Автосервис «Честный мастер» в Санкт-Петербурге: ремонт двигателей и АКПП, кузовной ремонт и покраска, антикор, автоэлектрика, осмотр авто перед покупкой. Индустриальный проспект, 66Б.">
@@ -44,7 +45,7 @@ h3{font-size:16px;font-weight:600;letter-spacing:.03em}
 header{position:sticky;top:0;z-index:30;background:rgba(6,7,9,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .bar{display:flex;align-items:center;gap:28px;height:70px}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:15px}
-.logo i{width:30px;height:30px;border-radius:8px;background:var(--blue);display:grid;place-items:center;font-style:normal;font-size:12px}
+.logo img{width:52px;height:52px}
 nav{display:flex;gap:26px;margin:0 auto;font-size:14px;color:var(--muted)}
 nav a{text-decoration:none}
 nav a:hover{color:var(--text)}
@@ -123,6 +124,7 @@ section{padding:96px 0}
 
 /* ФИНАЛ */
 .final{text-align:center;padding:110px 0 40px}
+.mascot{display:block;width:min(240px,60vw);height:auto;margin:0 auto 28px;filter:drop-shadow(0 18px 40px rgba(58,99,224,.35))}
 .final p{color:var(--muted);max-width:48ch;margin:16px auto 30px}
 .contact{display:grid;grid-template-columns:.9fr 1.1fr;gap:14px;margin-top:64px;text-align:left}
 .info{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:30px;display:grid;gap:20px;align-content:start}
@@ -164,7 +166,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 
 <header>
   <div class="wrap bar">
-    <a class="logo" href="#top"><i>ЧМ</i>Честный мастер</a>
+    <a class="logo" href="#top"><img src="img/logo-icon.png" width="52" height="52" alt="">Честный мастер</a>
     <nav>
       <a href="#services">Услуги и цены</a>
       <a href="#check">Осмотр авто</a>
@@ -312,6 +314,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 
   <section id="contacts" class="final glow">
     <div class="wrap">
+      <img class="mascot" src="img/logo.webp" width="560" height="562" alt="Логотип автосервиса «Честный мастер»">
       <h2>Приезжайте на диагностику</h2>
       <p>Позвоните или напишите, расскажите, что с машиной. Подскажем примерную цену и запишем на удобное время.</p>
       <div class="cta">
