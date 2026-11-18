@@ -2,7 +2,8 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#060709">
 <link rel="icon" type="image/png" href="img/favicon.png">
 <meta name="robots" content="noindex, nofollow">
 <title>Честный мастер, автосервис на Индустриальном</title>
@@ -147,22 +148,80 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
   .check{padding:28px}
   .steps{grid-template-columns:1fr 1fr}
 }
+.hcall{display:none}
 @media (max-width:600px){
-  body{font-size:16px}
-  section{padding:64px 0}
+  body{font-size:16px;padding-bottom:calc(84px + env(safe-area-inset-bottom))}
+  .wrap{padding:0 16px}
+  .demo{font-size:12px;padding:5px 12px}
+  .d-long{display:none}
+  /* шапка как у мини-аппа: логотип, звонок, вкладки разделов */
+  .bar{height:auto;flex-wrap:wrap;gap:0;padding-top:8px}
+  .logo{font-size:14px;gap:8px}
+  .logo img{width:40px;height:40px}
   .bar .btn,.phone{display:none}
-  .hero{padding-top:48px}
-  .stats{grid-template-columns:1fr}
-  .services,.why,.steps{grid-template-columns:1fr}
-  .svc{min-height:260px}
-  .mobile-call{display:flex;position:fixed;left:12px;right:12px;bottom:12px;z-index:40;gap:8px}
-  .mobile-call .btn{flex:1;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+  .hcall{display:grid;place-items:center;width:40px;height:40px;margin-left:auto;border-radius:12px;background:var(--blue);color:#fff}
+  nav{display:flex;order:3;width:calc(100% + 32px);margin:8px -16px 0;padding:0 16px 10px;gap:8px;overflow-x:auto;scrollbar-width:none;font-size:13px}
+  nav::-webkit-scrollbar{display:none}
+  nav a{flex:none;padding:7px 14px;border-radius:999px;background:var(--panel-2);color:var(--text);border:1px solid var(--line)}
+  section{padding:48px 0}
+  h2{font-size:26px}
+  .sub{font-size:15px}
+  /* первый экран */
+  .hero{padding:28px 0 8px;text-align:left;overflow:hidden}
+  .hero .tag{font-size:13px;padding:6px 12px}
+  .hero h1{font-size:34px;margin:16px 0 12px;max-width:none}
+  .hero p{font-size:16px;margin:0}
+  .hero .cta{display:none}
+  .stage{width:150vw;margin:18px 0 0 -6vw}
+  .stage:before{filter:blur(22px)}
+  .stats{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;background:none;border:0;border-radius:0;margin:6px 0 0;padding:0;scrollbar-width:none}
+  .stats::-webkit-scrollbar{display:none}
+  .stats div{flex:0 0 72%;scroll-snap-align:start;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px}
+  .stats strong{font-size:24px}
+  .split{gap:18px}
+  .split p{font-size:15px}
+  /* услуги плиткой 2 в ряд */
+  .services{grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
+  .svc{min-height:200px;padding:14px;border-radius:16px}
+  .svc h3{font-size:12.5px;letter-spacing:.02em}
+  .svc .price{font-size:18px}
+  .svc .price small{font-size:11px}
+  .svc .more{display:none}
+  .svc.ask{grid-column:1/-1;min-height:auto;gap:12px}
+  .svc.ask p{font-size:14px}
+  .also{font-size:13px}
+  .check{padding:22px;border-radius:20px;gap:24px}
+  .tier{font-size:15px}
+  .list li{font-size:15px}
+  /* преимущества свайпом */
+  .why-grid{gap:20px}
+  .why{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;margin:0;padding:0;scrollbar-width:none}
+  .why::-webkit-scrollbar{display:none}
+  .why div{flex:0 0 78%;scroll-snap-align:start;padding:18px}
+  /* этапы списком */
+  .steps{grid-template-columns:1fr;gap:0;margin-top:22px}
+  .steps li{display:grid;grid-template-columns:40px 1fr;column-gap:8px;border-top:0;border-left:2px solid var(--blue);padding:0 0 18px 14px}
+  .steps li:before{grid-row:span 2;margin:0}
+  .steps b{margin:0}
+  .final{padding:56px 0 20px}
+  .mascot{width:170px}
+  .final .cta{display:none}
+  .contact{margin-top:28px}
+  .info{padding:20px}
+  .big{font-size:18px}
+  .map{min-height:260px}
+  footer{margin-top:40px;padding-bottom:24px}
+  /* нижняя панель действий */
+  .mobile-call{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:40;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(12,14,20,.86);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--line)}
+  .mobile-call .btn{min-height:46px;padding:0 12px;font-size:14px}
+  .mobile-call .btn-blue{flex:1.4}
+  .btn-dock{flex:1;background:var(--panel-2);color:var(--text);border-color:var(--line)}
 }
 </style>
 </head>
 <body>
 
-<div class="demo">Демо-версия сайта для автосервиса «Честный мастер». Подготовлено для показа владельцу, это не официальный сайт.</div>
+<div class="demo">Демо-версия сайта<span class="d-long"> для автосервиса «Честный мастер». Подготовлено для показа владельцу, это не официальный сайт</span>.</div>
 
 <header>
   <div class="wrap bar">
@@ -174,6 +233,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
       <a href="#contacts">Контакты</a>
     </nav>
     <a class="phone" href="tel:+79117250011">+7 911 725-00-11</a>
+    <a class="hcall" href="tel:+79117250011" aria-label="Позвонить: +7 911 725-00-11"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></a>
     <a class="btn btn-white" href="https://wa.me/79117250011">Записаться</a>
   </div>
 </header>
@@ -349,7 +409,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 
 <div class="mobile-call">
   <a class="btn btn-blue" href="tel:+79117250011">Позвонить</a>
-  <a class="btn btn-white" href="https://wa.me/79117250011">WhatsApp</a>
+  <a class="btn btn-dock" href="https://wa.me/79117250011">WhatsApp</a>
+  <a class="btn btn-dock" href="https://t.me/+79117250011">Telegram</a>
 </div>
 
 </body>
