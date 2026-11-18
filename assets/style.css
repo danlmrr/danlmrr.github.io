@@ -178,7 +178,8 @@ button{font:inherit;color:inherit}
 .nf__title{font-size:clamp(64px,14vw,200px)}
 
 /* ---------- плёночное зерно на фоне (под текстом и карточками) ---------- */
-.grain{position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.04;background:url(noise.png) 0 0/256px 256px repeat}
+.grain{position:fixed;left:-128px;top:-128px;right:-128px;bottom:-128px;pointer-events:none;z-index:-1;opacity:.04;background:url(noise.png) 0 0/256px 256px repeat;will-change:transform;animation:grain .8s steps(1,end) infinite}
+@keyframes grain{0%{transform:translate(116px,79px)}10%{transform:translate(-1px,-5px)}20%{transform:translate(-73px,85px)}30%{transform:translate(11px,1px)}40%{transform:translate(83px,-73px)}50%{transform:translate(-96px,-6px)}60%{transform:translate(87px,107px)}70%{transform:translate(-110px,32px)}80%{transform:translate(15px,-104px)}90%{transform:translate(-72px,105px)}}
 
 /* ---------- светящиеся пятна в тёмных блоках ---------- */
 .dark,.cta{position:relative;overflow:hidden;isolation:isolate}
