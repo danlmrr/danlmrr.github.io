@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#060709">
+<meta name="robots" content="noindex, nofollow">
+<title>Gidro, автомойка на Заставской</title>
+<meta name="description" content="Автомойка Gidro в Санкт-Петербурге: мойка круглосуточно, детейлинг, химчистка салона, полировка, тонировка, шиномонтаж. Заставская улица, 46 к4.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Идея: тёмный бокс, синий свет из-под машины. Машина наполовину в грунте, наполовину покрашена. */
+:root{
+  --bg:#060709;
+  --panel:#141821;
+  --panel-2:#1b2030;
+  --line:rgba(255,255,255,.08);
+  --text:#eef1f7;
+  --muted:#98a0b3;
+  --blue:#3a63e0;
+  --blue-hi:#6f93ff;
+  --font:"Onest", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --r:18px;
+  --refl-h:clamp(36px,7vw,90px);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);font-size:17px;line-height:1.55;overflow-x:hidden}
+a{color:inherit}
+svg{display:block}
+h1,h2,h3{margin:0;font-weight:500;text-transform:uppercase;letter-spacing:.01em;line-height:1.08;text-wrap:balance}
+h2{font-size:clamp(28px,4.2vw,46px)}
+h3{font-size:16px;font-weight:600;letter-spacing:.03em}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+:focus-visible{outline:2px solid var(--blue-hi);outline-offset:3px;border-radius:8px}
+.glow{position:relative;isolation:isolate}
+.glow:before{content:"";position:absolute;z-index:-1;inset:0;pointer-events:none;background:radial-gradient(60% 55% at 50% 55%,rgba(58,99,224,.38),transparent 70%)}
+
+.demo{background:#1d2742;color:#c9d4ff;font-size:13px;text-align:center;padding:7px 16px}
+
+header{position:sticky;top:0;z-index:30;background:rgba(6,7,9,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:28px;height:70px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:15px}
+.logo svg{width:40px;height:40px;flex:none}
+nav{display:flex;gap:26px;margin:0 auto;font-size:14px;color:var(--muted)}
+nav a{text-decoration:none}
+nav a:hover{color:var(--text)}
+.phone{font-weight:600;text-decoration:none;white-space:nowrap;font-variant-numeric:tabular-nums}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 24px;border-radius:999px;font:600 15px/1 var(--font);text-decoration:none;border:1px solid transparent;transition:background .2s,transform .2s;white-space:nowrap}
+.btn:hover{transform:translateY(-1px)}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-blue:hover{background:#4a73f0}
+.btn-white{background:#fff;color:#0b0d12}
+.btn-line{border-color:rgba(255,255,255,.22);color:var(--text)}
+.btn-line:hover{background:rgba(255,255,255,.06)}
+.bar .btn{min-height:40px;padding:0 18px;font-size:14px}
+
+/* HERO */
+.hero{padding:72px 0 40px;text-align:center}
+.hero .tag{display:inline-flex;gap:8px;align-items:center;font-size:14px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:7px 14px}
+.hero .tag b{color:var(--blue-hi);font-weight:600}
+.hero h1{font-size:clamp(34px,6vw,68px);margin:26px auto 18px;max-width:20ch}
+.hero p{color:var(--muted);max-width:52ch;margin:0 auto 30px;font-size:18px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.stage{position:relative;width:min(1040px,100%);margin:36px auto 0;isolation:isolate}
+.stage:before{content:"";position:absolute;z-index:-1;left:6%;right:6%;top:18%;bottom:-6%;background:radial-gradient(50% 55% at 50% 62%,rgba(58,99,224,.65),rgba(58,99,224,.18) 55%,transparent 75%);filter:blur(28px)}
+.stage:after{content:"";position:absolute;z-index:-1;left:4%;right:4%;bottom:calc(var(--refl-h) - 6px);height:18px;background:radial-gradient(50% 50% at 50% 50%,rgba(0,0,0,.9),transparent 70%)}
+.car{display:block;width:100%;height:auto}
+.refl{--h:0;height:var(--refl-h);overflow:hidden;opacity:.28;-webkit-mask-image:linear-gradient(to bottom,#000,transparent 85%);mask-image:linear-gradient(to bottom,#000,transparent 85%)}
+.refl img{display:block;width:100%;height:auto;transform:scaleY(-1);filter:blur(1.5px) saturate(1.2)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-top:24px}
+.stats div{background:var(--bg);padding:22px 20px;text-align:left}
+.stats strong{display:block;font-size:30px;font-weight:600;font-variant-numeric:tabular-nums}
+.stats span{color:var(--muted);font-size:14px}
+
+section{padding:96px 0}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.split p{color:var(--muted);margin:0 0 16px}
+.sub{color:var(--muted);margin:14px 0 0;max-width:52ch}
+
+/* УСЛУГИ */
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px}
+.svc{position:relative;overflow:hidden;background:#000 var(--img) right bottom/cover no-repeat;border:1px solid var(--line);border-radius:var(--r);padding:24px;min-height:300px;display:flex;flex-direction:column;text-decoration:none;transition:border-color .2s}
+.svc:before{content:"";position:absolute;inset:0;background:linear-gradient(160deg,rgba(6,7,9,.95) 18%,rgba(6,7,9,.45) 50%,rgba(6,7,9,0) 80%),linear-gradient(0deg,rgba(6,7,9,.9),rgba(6,7,9,0) 42%);transition:opacity .3s}
+.svc>*{position:relative}
+.svc:hover:before{opacity:.85}
+.svc:hover{border-color:rgba(111,147,255,.45)}
+.svc h3{max-width:16ch}
+.svc .price{margin-top:auto;font-size:24px;font-weight:600;font-variant-numeric:tabular-nums}
+.svc .price small{font-size:13px;color:var(--muted);font-weight:400}
+.svc .more{font-size:13px;color:#c3c9d6;margin-top:4px}
+.svc.ask{background:var(--blue);border-color:var(--blue)}
+.svc.ask:before{display:none}
+.svc.ask p{margin:10px 0 0;color:#dfe6ff;font-size:15px;max-width:30ch}
+.svc.ask .btn{margin-top:auto;align-self:flex-start}
+.also{margin-top:18px;color:var(--muted);font-size:14px}
+
+/* ОСМОТР */
+.check{background:var(--panel);border:1px solid var(--line);border-radius:28px;padding:48px;display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.tiers{margin-top:26px;border-top:1px solid var(--line)}
+.tier{display:flex;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+.tier b{font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+.list{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.list li{display:grid;grid-template-columns:26px 1fr;gap:12px;color:#d5dae6}
+.list li:before{content:"";width:18px;height:18px;margin-top:3px;border-radius:50%;background:radial-gradient(circle,var(--blue-hi) 0 4px,rgba(58,99,224,.25) 5px)}
+
+/* ПОЧЕМУ */
+.why-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:40px;align-items:start}
+.why{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.why div{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:24px}
+.why h3{margin-bottom:10px}
+.why p{margin:0;color:var(--muted);font-size:15px}
+
+/* ЭТАПЫ */
+.steps{list-style:none;padding:0;margin:40px 0 0;display:grid;grid-template-columns:repeat(5,1fr);gap:14px;counter-reset:s}
+.steps li{counter-increment:s;border-top:2px solid var(--blue);padding-top:18px}
+.steps li:before{content:"0" counter(s);display:block;color:var(--blue-hi);font-weight:600;margin-bottom:8px;font-variant-numeric:tabular-nums}
+.steps b{display:block;text-transform:uppercase;letter-spacing:.03em;font-size:15px;margin-bottom:6px}
+.steps span{color:var(--muted);font-size:15px}
+
+/* ФИНАЛ */
+.final{text-align:center;padding:110px 0 40px}
+.mascot{display:block;width:min(240px,60vw);height:auto;margin:0 auto 28px;filter:drop-shadow(0 18px 40px rgba(58,99,224,.35))}
+.final p{color:var(--muted);max-width:48ch;margin:16px auto 30px}
+.contact{display:grid;grid-template-columns:.9fr 1.1fr;gap:14px;margin-top:64px;text-align:left}
+.info{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:30px;display:grid;gap:20px;align-content:start}
+.label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+.big{font-size:22px;font-weight:600}
+.info p{margin:6px 0 0;color:var(--muted);font-size:15px}
+.info .cta{justify-content:flex-start}
+.map{border-radius:var(--r);overflow:hidden;min-height:380px;background:var(--panel);border:1px solid var(--line);position:relative}
+.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+footer{border-top:1px solid var(--line);color:var(--muted);font-size:14px;padding:28px 0 100px;margin-top:80px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+
+.mobile-call{display:none}
+@media (max-width:960px){
+  nav{display:none}
+  .bar{justify-content:space-between}
+  .services{grid-template-columns:1fr 1fr}
+  .split,.check,.why-grid,.contact{grid-template-columns:1fr}
+  .check{padding:28px}
+  .steps{grid-template-columns:1fr 1fr}
+}
+.hcall{display:none}
+@media (max-width:600px){
+  body{font-size:16px;padding-bottom:calc(84px + env(safe-area-inset-bottom))}
+  .wrap{padding:0 16px}
+  .demo{font-size:12px;padding:5px 12px}
+  .d-long{display:none}
+  /* шапка как у мини-аппа: логотип, звонок, вкладки разделов */
+  .bar{height:auto;flex-wrap:wrap;gap:0;padding-top:8px}
+  .logo{font-size:14px;gap:8px}
+  .logo svg{width:36px;height:36px}
+  .bar .btn,.phone{display:none}
+  .hcall{display:grid;place-items:center;width:40px;height:40px;margin-left:auto;border-radius:12px;background:var(--blue);color:#fff}
+  nav{display:flex;order:3;width:calc(100% + 32px);margin:8px -16px 0;padding:0 16px 10px;gap:8px;overflow-x:auto;scrollbar-width:none;font-size:13px}
+  nav::-webkit-scrollbar{display:none}
+  nav a{flex:none;padding:7px 14px;border-radius:999px;background:var(--panel-2);color:var(--text);border:1px solid var(--line)}
+  section{padding:48px 0}
+  h2{font-size:26px}
+  .sub{font-size:15px}
+  /* первый экран */
+  .hero{padding:28px 0 8px;text-align:left;overflow:hidden}
+  .hero .tag{font-size:13px;padding:6px 12px}
+  .hero h1{font-size:34px;margin:16px 0 12px;max-width:none}
+  .hero p{font-size:16px;margin:0}
+  .hero .cta{display:none}
+  .stage{width:150vw;margin:18px 0 0 -6vw}
+  .stage:before{filter:blur(22px)}
+  .stats{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;background:none;border:0;border-radius:0;margin:6px 0 0;padding:0;scrollbar-width:none}
+  .stats::-webkit-scrollbar{display:none}
+  .stats div{flex:0 0 72%;scroll-snap-align:start;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px}
+  .stats strong{font-size:24px}
+  .split{gap:18px}
+  .split p{font-size:15px}
+  /* услуги плиткой 2 в ряд */
+  .services{grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
+  .svc{min-height:200px;padding:14px;border-radius:16px}
+  .svc h3{font-size:12.5px;letter-spacing:.02em}
+  .svc .price{font-size:18px}
+  .svc .price small{font-size:11px}
+  .svc .more{display:none}
+  .svc.ask{grid-column:1/-1;min-height:auto;gap:12px}
+  .svc.ask p{font-size:14px}
+  .also{font-size:13px}
+  .check{padding:22px;border-radius:20px;gap:24px}
+  .tier{font-size:15px}
+  .list li{font-size:15px}
+  /* преимущества свайпом */
+  .why-grid{gap:20px}
+  .why{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;margin:0;padding:0;scrollbar-width:none}
+  .why::-webkit-scrollbar{display:none}
+  .why div{flex:0 0 78%;scroll-snap-align:start;padding:18px}
+  /* этапы списком */
+  .steps{grid-template-columns:1fr;gap:0;margin-top:22px}
+  .steps li{display:grid;grid-template-columns:40px 1fr;column-gap:8px;border-top:0;border-left:2px solid var(--blue);padding:0 0 18px 14px}
+  .steps li:before{grid-row:span 2;margin:0}
+  .steps b{margin:0}
+  .final{padding:56px 0 20px}
+  .mascot{width:170px}
+  .final .cta{display:none}
+  .contact{margin-top:28px}
+  .info{padding:20px}
+  .big{font-size:18px}
+  .map{min-height:260px}
+  footer{margin-top:40px;padding-bottom:24px}
+  /* нижняя панель действий */
+  .mobile-call{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:40;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(12,14,20,.86);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--line)}
+  .mobile-call .btn{min-height:46px;padding:0 12px;font-size:14px}
+  .mobile-call .btn-blue{flex:1.4}
+  .btn-dock{flex:1;background:var(--panel-2);color:var(--text);border-color:var(--line)}
+}
+
+.promo{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;background:linear-gradient(90deg,var(--blue),#2446b8);border-radius:var(--r);padding:22px 26px;margin-top:22px;text-align:left}
+.promo b{display:block;font-size:20px;text-transform:uppercase;letter-spacing:.02em}
+.promo span{color:#dfe6ff;font-size:15px}
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:36px}
+.rev{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:22px;display:flex;flex-direction:column;gap:12px}
+.rev p{margin:0;font-size:16px}
+.rev small{color:var(--muted);font-size:13px;margin-top:auto}
+.stars{color:#ffc53d;letter-spacing:2px;font-size:14px}
+@media (max-width:960px){.reviews{grid-template-columns:1fr}}
+@media (max-width:600px){
+  .promo{padding:18px;margin-top:16px}
+  .promo b{font-size:17px}
+  .promo .btn{width:100%}
+  .reviews{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;margin-top:22px;scrollbar-width:none}
+  .reviews::-webkit-scrollbar{display:none}
+  .rev{flex:0 0 80%;scroll-snap-align:start}
+}
+</style>
+</head>
+<body>
+
+<div class="demo">Демо-версия сайта<span class="d-long"> для автомойки «Gidro». Подготовлено для показа владельцу, это не официальный сайт</span>.</div>
+
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#top"><svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#3a63e0"/><path d="M20 9c5 6.5 8 10.5 8 14.5a8 8 0 0 1-16 0C12 19.5 15 15.5 20 9z" fill="none" stroke="#fff" stroke-width="2.6" stroke-linejoin="round"/><path d="M16.5 24a3.5 3.5 0 0 0 3.5 3.5" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>Gidro</a>
+    <nav><a href="#services">Услуги и цены</a><a href="#contacts">Контакты</a></nav>
+    <a class="phone" href="tel:+79210980020">+7 921 098-00-20</a>
+    <a class="hcall" href="tel:+79210980020" aria-label="Позвонить: +7 921 098-00-20"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></a>
+    <a class="btn btn-white" href="https://wa.me/79210980020">Записаться</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero glow" style="padding-bottom:40px">
+    <div class="wrap">
+      <span class="tag"><b>5,0</b> в Яндекс Картах · 962 оценки</span>
+      <h1>Мойка круглосуточно. Без очередей</h1>
+      <p>Автомойка на Заставской, 46 к4. Бесконтактная и комплексная мойка, химчистка салона, полировка, тонировка и шиномонтаж. Работаем 24 часа, 7 дней в неделю.</p>
+      <div class="cta">
+        <a class="btn btn-blue" href="tel:+79210980020">Позвонить и записаться</a>
+        <a class="btn btn-line" href="#services">Посмотреть цены</a>
+      </div>
+      <div class="stage">
+        <img class="car" src="img/hero-m5.webp" width="1600" height="494" alt="Седан: передняя половина кузова в сером грунте, задняя покрашена в синий" fetchpriority="high">
+        <div class="refl" aria-hidden="true"><img src="img/hero-m5.webp" width="1600" height="494" alt=""></div>
+      </div>
+      <div class="stats"><div><strong>24/7</strong><span>работаем круглосуточно без выходных</span></div><div><strong>2026</strong><span>награда «Хорошее место» от Яндекса</span></div><div><strong>6 постов</strong><span>принимаем до 6 машин одновременно</span></div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap split">
+      <h2>Чистая машина в любое время суток</h2>
+      <div>
+        <p>Делаем бесконтактную и комплексную мойку, моем двигатель, делаем химчистку салона и полировку кузова. Есть тонировка стёкол и сезонный шиномонтаж.</p>
+        <p>Пока моем, можно подождать в зале ожидания: есть кафе, кофе и Wi-Fi. Оплата картой, наличными, переводом, по QR или частями.</p>
+        <a class="btn btn-line" href="#services">Услуги и цены</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" style="padding-top:0">
+    <div class="wrap">
+      <h2>Услуги и цены</h2>
+      <p class="sub">Цены для легкового автомобиля. Для кроссоверов и внедорожников уточняйте по телефону.</p>
+      <div class="services">
+        <a class="svc" style="--img:url(img/radiator.jpg)" href="tel:+79210980020">
+          <h3>Мойка «Стандарт»</h3>
+          <div class="price">990 ₽</div><div class="more">Кузов от 390 ₽</div>
+        </a>
+        <a class="svc" style="--img:url(img/body.jpg)" href="tel:+79210980020">
+          <h3>Мойка «Люкс»</h3>
+          <div class="price">1 990 ₽</div><div class="more">Расширенная программа</div>
+        </a>
+        <a class="svc" style="--img:url(img/anticor.jpg)" href="tel:+79210980020">
+          <h3>Мойка «Премиум»</h3>
+          <div class="price">3 490 ₽</div><div class="more">Максимальная программа</div>
+        </a>
+        <a class="svc" style="--img:url(img/alignment.jpg)" href="tel:+79210980020">
+          <h3>Сезонная замена шин</h3>
+          <div class="price">3 500 ₽</div><div class="more">Шиномонтаж на месте</div>
+        </a>
+        <a class="svc" style="--img:url(img/timing.jpg)" href="tel:+79210980020">
+          <h3>Мойка двигателя</h3>
+          <div class="price">по запросу</div><div class="more">Двигатель и подкапотное пространство</div>
+        </a>
+        <a class="svc" style="--img:none;background:linear-gradient(180deg,#1b2030,#141821)" href="tel:+79210980020">
+          <h3>Химчистка, полировка, тонировка</h3>
+          <div class="price">по запросу</div><div class="more">Детейлинг на месте</div>
+        </a>
+        <div class="svc ask">
+          <h3>Хотите узнать цену для вашей машины?</h3>
+          <p>Напишите марку и что нужно сделать, ответим с ценой и свободным временем.</p>
+          <a class="btn btn-white" href="https://wa.me/79210980020">Написать в WhatsApp</a>
+        </div>
+      </div>
+      <p class="also">Также: бесконтактная мойка, тонировка стёкол, установка и ремонт автостёкол.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <h2>Как это работает</h2>
+      <ol class="steps"><li><b>Запись</b><span>Звоните или пишите, подберём время.</span></li><li><b>Приезд</b><span>Ставим машину на свободный пост.</span></li><li><b>Мойка</b><span>Делаем по выбранной программе.</span></li><li><b>Проверка</b><span>Смотрим результат вместе с вами.</span></li><li><b>Оплата</b><span>Картой, наличными или по QR.</span></li></ol>
+    </div>
+  </section>
+
+  <section id="contacts" class="final glow">
+    <div class="wrap">
+      <h2>Приезжайте в любое время</h2>
+      <p>Позвоните или напишите, чтобы занять удобное время. Работаем круглосуточно.</p>
+      <div class="cta">
+        <a class="btn btn-blue" href="tel:+79210980020">+7 921 098-00-20</a>
+        <a class="btn btn-line" href="https://wa.me/79210980020">WhatsApp</a>
+      </div>
+      <div class="contact">
+        <div class="info">
+          <div><div class="label">Адрес</div><div class="big">Заставская улица, 46 к4</div><p>Московский район, рядом с метро «Электросила».</p></div>
+          <div><div class="label">Режим работы</div><div class="big">Круглосуточно</div><p>Без выходных. Можно записаться заранее.</p></div>
+          <div class="cta"><a class="btn btn-line" href="https://yandex.ru/maps/org/gidro/83224523501/">Маршрут в Яндекс Картах</a></div>
+        </div>
+        <div class="map">
+          <iframe title="Карта: Заставская улица, 46 к4" src="https://yandex.ru/map-widget/v1/?ll=30.314665%2C59.884822&amp;z=16&amp;oid=83224523501&amp;ol=biz" loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Gidro · автомойка · Санкт-Петербург, Заставская улица, 46 к4</span>
+    <span>Демо-сайт: ttrnkv, Telegram @danlmr</span>
+  </div>
+</footer>
+
+<div class="mobile-call">
+  <a class="btn btn-blue" href="tel:+79210980020">Позвонить</a>
+  <a class="btn btn-dock" href="https://wa.me/79210980020">WhatsApp</a>
+</div>
+
+</body>
+</html>
